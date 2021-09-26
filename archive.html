@@ -1,0 +1,23 @@
+---
+layout: page
+title: Archive
+permalink: /archive/
+---
+<!-- # Insert newer event at the beginning -->
+
+<div class="archive">
+  {% for cat in site.categories reversed %}
+  {% assign c = cat | first %}
+  {% assign posts = cat | last %}
+  	<h2>{{ c }}</h2>
+    <ul class="post-list">
+      {% for post in posts %}
+        <li>
+          <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</div>
+
